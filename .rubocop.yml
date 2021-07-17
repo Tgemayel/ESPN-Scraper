@@ -1,0 +1,105 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rake
+  # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0
+  DisplayCopNames: yes
+  Include:
+    - 'lib/**/*'
+    - 'spec/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Metrics:
+  Enabled: false
+
+#
+# STYLE
+#
+
+Style/FormatString:
+  Enabled: true
+  EnforcedStyle: percent
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+    - "Gemfile"
+    - "spec/**/*_spec.rb"
+  IgnoredMethods:
+    - puts
+  IgnoredPatterns:
+    - 'logger\.debug'
+    - 'logger\.info'
+    - 'logger\.error'
+    - 'logger\.warn'
+    - 'logger\.fatal'
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/MutableConstant:
+  Enabled: true
+  EnforcedStyle: strict
+
+Style/FormatStringToken:
+  Enabled: false
+
+#
+# LINT
+#
+
+Lint/PercentStringArray:
+  Enabled: true
+  Autocorrect: true
+
+
+#
+# LAYOUT
+#
+
+Layout/LineLength:
+  Max: 120
+
+Layout/HashAlignment:
+  Enabled: true
+  AutoCorrect: true
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: no_space
+
+Layout/ExtraSpacing:
+  # When true, allows most uses of extra spacing if the intent is to align
+  # things with the previous or next line, not counting empty lines or comment
+  # lines.
+  AllowForAlignment: true
+  # When true, forces the alignment of = in assignments on consecutive lines.
+  ForceEqualSignAlignment: true
+
+#
+# RSPEC
+#
+
+RSpec/LetBeforeExamples:
+  Enabled: false
+
+RSpec/ScatteredLet:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
