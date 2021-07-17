@@ -1,5 +1,7 @@
 # ESPN Scraper
 
+![](https://s6.gifyu.com/images/boxscore.md.gif)
+
 ## Installation
 
 Add this line to your application's Gemfile:
